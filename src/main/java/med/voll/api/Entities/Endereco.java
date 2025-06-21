@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.DTO.DadosEndereco;
 
 @Getter // Gerar os getters
 @NoArgsConstructor // Gerar o construtor default
@@ -20,4 +21,14 @@ public class Endereco {
     private String complemento;
     private String cidade;
     private String uf;
+
+    public Endereco(DadosEndereco dados) {
+        this.logradouro = dados.logradouro();
+        this.bairro = dados.bairro();
+        this.cep = dados.cep();
+        this.numero = dados.numero();
+        this.complemento = dados.complemento();
+        this.cidade = dados.cidade();
+        this.uf = dados.uf();
+    }
 }
