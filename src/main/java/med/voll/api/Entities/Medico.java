@@ -12,7 +12,6 @@ import med.voll.api.Enums.Especialidade;
 @NoArgsConstructor // Gerar o construtor default
 @AllArgsConstructor // Gerar o constutor que recebe todos argumentos
 @EqualsAndHashCode (of = "id") // Gerar em cima do ID
-
 @Table(name = "medicos") // Esta entidade esta sendo mapeada como tabela chamada "medicos"
 @Entity(name = "Medico") // Mapeando uma entidade chamada "Medico"
 public class Medico {
