@@ -29,7 +29,7 @@ public class MedicoController {
 
     @GetMapping
     public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){ // Importar pageable do spring
-        return medicoRepository.findAll(paginacao).map(DadosListagemMedico::new);
+        return medicoRepository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
     }
 
     @PutMapping
@@ -37,6 +37,13 @@ public class MedicoController {
     public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados){
         var medico = medicoRepository.getReferenceById(dados.id());
         medico.atualizarDados(dados);
+    }
+
+    @DeleteMapping("/{id}") // Com parâmetro dinâmico
+    @Transactional
+    public void excluir(@PathVariable Long id){ // Pega o numero da url e coloque ele como parâmetro
+        var medico = medicoRepository.getReferenceById(id);
+        medico.excluir();
     }
 
 }
